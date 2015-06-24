@@ -34,23 +34,23 @@ ldr r0,=0x20200000
 * r1=0x00010000	a number with bit 16 high, so we can communicate with GPIO 16.
 */
 mov r1,#1
-lsl r1,#18
+lsl r1,#21
 
 /*
 * Set the GPIO function select.
 */
-str r1,[r0,#4]
+str r1,[r0,#16]
 
 /* 
 * Set the 16th bit of r1.
 */
 mov r1,#1
-lsl r1,#16
+lsl r1,#15
 
 /* 
 * Set GPIO 16 to low, causing the LED to turn on.
 */
-str r1,[r0,#40]
+str r1,[r0,#32]
 
 /*
 * Loop over this forevermore
