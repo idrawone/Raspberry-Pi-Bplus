@@ -37,18 +37,18 @@ ldr r0,=0x20200000
 *				to decrement to 0, allowing us to create a delay.
 */
 mov r1,#1
-lsl r1,#18
+lsl r1,#21
 
 /*
 * Set the GPIO function select.
 */
-str r1,[r0,#4]
+str r1,[r0,#16]
 
 /* 
 * Set the 16th bit of r1.
 */
 mov r1,#1
-lsl r1,#16
+lsl r1,#15
 
 /* NEW
 * Label the next line loop$ for the infinite looping
@@ -58,7 +58,7 @@ loop$:
 /*
 * Set GPIO 16 to low, causing the LED to turn on.
 */
-str r1,[r0,#40]
+str r1,[r0,#32]
 
 /* NEW
 * Now, to create a delay, we busy the processor on a pointless quest to 
@@ -73,7 +73,7 @@ wait1$:
 /* NEW
 * Set GPIO 16 to high, causing the LED to turn off.
 */
-str r1,[r0,#28]
+str r1,[r0,#44]
 
 /* NEW
 * Wait once more.
